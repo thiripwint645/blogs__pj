@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router";
+import Header from "./components/Header";
+import Home from "./components/Home";
+
+import NotFoundPage from "./components/NotFoundPage";
+import AddForm from "./components/AddForm";
+import BlogDetail from "./components/BlogDetail";
+import EditForm from "./components/EditForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs/:blogId" element={<BlogDetail />} />
+        <Route path="/add-blog" element={<AddForm />} />
+        <Route path="/edit-blog/:id" element={<EditForm />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
